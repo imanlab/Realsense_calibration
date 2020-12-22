@@ -18,7 +18,7 @@ For completing the calibration process you need to have the following ROS packag
 
       whycon_ros
 
-Step 1.Save four different whycon markers and put them in one A4 page and print it. You can see the instruction on how to print the markers on [https://github.com/LCAS/whycon](whycon github page). Fix the page on a suitable place on the table which can be easily detectable by the realsense camera. you can see the detected markers by "roslaunch whycon_ros whycon.launch". In the opened GUI correct the marker size and the number of markers to 4. 
+Step 1.Save four different whycon markers and put them in one A4 page and print it. You can see the instruction on how to print the markers on [https://github.com/LCAS/whycon] (whycon github page). Fix the page on a suitable place on the table which can be easily detectable by the realsense camera. you can see the detected markers by "roslaunch whycon_ros whycon.launch". In the opened GUI correct the marker size and the number of markers to 4. 
 
 Step 2. 
 First we need to launch the realsense_calib.launch file which includes launching: 1- franka_control/ranka_control.launch, 2- panda_moveit_config/anda_moveit.launch, 3- panda_moveit_config/oveit_rviz.launch, 4- realsense2_camera/rs_camera.launch, and 5- whycon_ros/whycon.launch files.
