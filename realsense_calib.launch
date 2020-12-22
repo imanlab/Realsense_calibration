@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="robot_ip" default="172.16.0.2"/>
+    <arg name="load_gripper" default="true"/>
+    <arg name="launch_marker_detection" default="false" />
+
+  <!-- CONTROLLER -->
+  <include file="$(find franka_control)/launch/franka_control.launch">
+      <arg name="robot_ip" value="$(arg robot_ip)"/>
+      <arg name="load_gripper" value="$(arg load_gripper)" />
+  </include>
+
+
+  <!-- MOVE IT -->
+  <include file="$(find panda_moveit_config)/launch/panda_moveit.launch" />
+
+  <!-- RVIZ -->
+  <include file="$(find panda_moveit_config)/launch/moveit_rviz.launch" />
+
+  <!-- realsense -->
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch" />
+
+
+
+  <!-- STATIC TRANSFORMS -->
+  <node pkg="tf" type="static_transform_publisher" name="create_world_transform" args="0 0 0 0 0 0 1 /world /panda_link0 100"/>
+  <!-- <node pkg="tf" type="static_transform_publisher" name="tester" args="0.08584777 -0.013775  0.00721299 0.69936238  0.01564062  0.71427488 -0.02142481 /panda_hand /camera_link 100"/> -->
+ 
+  <!-- <node pkg="tf" type="static_transform_publisher" name="realsense_camlink_optical" args="0.001 0.015 0.0 -0.496 0.500 -0.502 0.502  /camera_link /camera_color_optical_frame 100"/>  ### for  NEW realsense #### -->
+
+
+  <!-- Launch Whycon with a 4sec delay -->
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="4" />
+    <arg name="pkg" value="whycon_ros" />
+    <arg name="file" value="whycon.launch" />
+    <arg name="node_name" value="timed_roslaunch" /> <!-- This is optional argument -->
+  </include>
+ 
+
+</launch>
+
+
+<!-- frame_id: "depth_to_color_extrinsics"
+rotation: [0.9999597668647766, 0.003653797088190913, -0.0081929387524724, -0.0036845500580966473, 0.9999862313270569, -0.0037416634149849415, 0.008179154247045517, 0.0037716999650001526, 0.999959409236908]
+translation: [0.014671526849269867, 0.0004502486845012754, 0.0007735163671895862] -->
