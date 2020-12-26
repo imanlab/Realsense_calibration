@@ -22,7 +22,10 @@ Step 1.Save four different whycon markers and put them in one A4 page and print 
 
 Step 2. 
 First we need to launch the realsense_calib.launch file which includes launching: 1- franka_control/ranka_control.launch, 2- panda_moveit_config/anda_moveit.launch, 3- panda_moveit_config/oveit_rviz.launch, 4- realsense2_camera/rs_camera.launch, and 5- whycon_ros/whycon.launch files.
-What you need is to take the robot EE to 15 different poses and save the corresponding joint space consiguration of these poses in the realsense_calibration.py script. You can have access to robot joint space configuration by echoing the target topic  from franka_state_controller. The issue with the whycon markers is that the id of the detected markers may change for different perspective so you have to run the OrientationGroundTruth.py as well and print the id of the detected markers and pick those 15 poses in such a way that for all of them the ids are the same. Try to cover both near and far views in order for the optimization to converge easier. 
+
+    roslaunch <your calibration package name> realsense_calib.launch
+
+What you need is to take the robot EE to 15 different poses and save the corresponding joint space consiguration of these poses in the realsense_calibration.py script. You can have access to robot joint space configuration by echoing the target topic from franka_state_controller. The issue with the whycon markers is that the id of the detected markers may change for different perspective so you have to run the OrientationGroundTruth.py as well and print the id of the detected markers and pick those 15 poses in such a way that for all of them the ids are the same. Try to cover both near and far views in order for the optimization to converge easier. 
 
 step3.
 After saving the joint state values in the calibration script you can now run it alongside launching realsense_calib.launch and running OrientationGroundTruth.py. this will move the robot to all the poses and finally publishes the resulted TF from optimazation which you can see in TF tree in RVIZ. The resulted tf is between panda_hand and camera_link. You can save this value in your launch file to publish it automatically in future to connect the frames of the robot and the camera.
