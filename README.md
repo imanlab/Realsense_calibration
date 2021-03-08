@@ -8,7 +8,9 @@ Tutorial for calibrating realsense camera on panda franka emika wrist
 In eye-on-hand case the camera is fixed on the robot end-effector and we need to find the transformation between camera frame to panda_hand frame (T_cam-PH). As such, from robot forward kinematic we know the transformation between base frame to panda_hand (T_base-PH) and from a marker detection package we know the transformation between marker frame and camera optical frame (T_marker-cam). From homogenous transformations and consecutive transformations we know that T_base-PH * T_cam-PH * T_marker-cam should give marker pose in base frame (T_marker-base). And since the marker array is fixed on the table so T_marker-base is a constant matrix. In that sense, what we do for camera to robot calibration is that we pick some poses for the robot in which the marker board is fully visible to camera field of view and and for these poses we save the T_base-PH (forward kinematic (franka_control)) and T_marker-cam (Whycon and OrientationGroundTruth.py). Here we have a optimization problem in which T_cam-PH is initialized with a [0, 0, 0, 0, 0 , 0, 1] and optimized in such a way that the sum of squared errors of
 T_marker-base values will be minimized. 
 
-Add Photo
+<p align="center">
+  <img width="600" src="image/calibrationdraw.png">
+</p>
 
 For completing the calibration process you need to have the following ROS packages already installed:
 
