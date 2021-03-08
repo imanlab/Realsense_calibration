@@ -9,7 +9,7 @@ In eye-on-hand case the camera is fixed on the robot end-effector and we need to
 T_marker-base values will be minimized. 
 
 <p align="center">
-  <img width="600" src="image/calibrationdraw.png">
+  <img width="600" src="images/calibrationdraw.png">
 </p>
 
 For completing the calibration process you need to have the following ROS packages already installed:
