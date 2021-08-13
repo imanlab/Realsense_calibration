@@ -32,3 +32,8 @@ What you need is to take the robot EE to 15 different poses and save the corresp
 step3.
 After saving the joint state values in the calibration script you can now run it alongside launching realsense_calib.launch and running OrientationGroundTruth.py. this will move the robot to all the poses and finally publishes the resulted TF from optimazation which you can see in TF tree in RVIZ. The resulted tf is between panda_hand and camera_link. You can save this value in your launch file to publish it automatically in future to connect the frames of the robot and the camera.
 
+For launching whycon you may need to do:
+
+    roslaunch whycon_ros whycon.launch camInfo:=/camera/color/camera_info camRaw:=/camera/color/image_raw
+
+
