@@ -20,6 +20,10 @@ For completing the calibration process you need to have the following ROS packag
 
   3. [whycon_ros](https://github.com/LCAS/whycon)
 
+If issues building the Whycon in with catkin_make citing package "magick++", install it with:
+
+    sudo apt-get install libmagick++-dev
+
 Step 1.Save four different whycon markers and put them in one A4 page and print it. You can see the instruction on how to print the markers on [whycon github page](https://github.com/LCAS/whycon). Fix the page on a suitable place on the table which can be easily detectable by the realsense camera. you can see the detected markers by "roslaunch whycon_ros whycon.launch". In the opened GUI correct the marker size and the number of markers to 4. 
 
 Step 2. 
